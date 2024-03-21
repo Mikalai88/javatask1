@@ -1,0 +1,3 @@
+13:01:48.854 [main] INFO  mikalai.array.service.impl.ArrayCalculateAverageServiceImpl - Calculated average: 4.0
+13:03:38.281 [main] INFO  mikalai.array.service.impl.ArrayCalculateSumServiceImpl - Calculated sum: 20
+13:12:01.683 [main] INFO  mikalai.array.service.impl.ArrayElementReplaceServiceImpl - Array element replaced. Old element, new element:
