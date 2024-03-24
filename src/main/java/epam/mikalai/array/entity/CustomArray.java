@@ -18,6 +18,6 @@ public class CustomArray {
     }
 
     public void setCustomArray(int[] customArray) {
-        this.customArray = Arrays.copyOf(customArray, customArray.length);
+        this.customArray = customArray;
     }
 }

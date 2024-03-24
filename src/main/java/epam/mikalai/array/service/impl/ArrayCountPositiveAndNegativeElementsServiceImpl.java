@@ -1,6 +1,7 @@
 package epam.mikalai.array.service.impl;
 
 import epam.mikalai.array.entity.CustomArray;
+import epam.mikalai.array.exception.CustomArrayException;
 import epam.mikalai.array.service.ArrayCountPositiveAndNegativeElementsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +10,14 @@ public class ArrayCountPositiveAndNegativeElementsServiceImpl implements ArrayCo
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public int findCountPositive(CustomArray customArray) {
+    public int findCountPositive(CustomArray customArray) throws CustomArrayException {
         int[] arr = customArray.getCustomArray();
+
+        if (arr.length == 0) {
+            logger.error("Array is empty");
+            throw new CustomArrayException("Array is empty");
+        }
+
         int positiveCount = 0;
         for (int value : arr) {
             if (value > 0) {
@@ -22,8 +29,14 @@ public class ArrayCountPositiveAndNegativeElementsServiceImpl implements ArrayCo
     }
 
     @Override
-    public int findCountNegative(CustomArray customArray) {
+    public int findCountNegative(CustomArray customArray) throws CustomArrayException {
         int[] arr = customArray.getCustomArray();
+
+        if (arr.length == 0) {
+            logger.error("Array is empty");
+            throw new CustomArrayException("Array is empty");
+        }
+
         int negativeCount = 0;
         for (int value : arr) {
             if (value < 0) {
