@@ -8,8 +8,7 @@ public class StringArrayValidatorImpl implements StringArrayValidator {
 
     @Override
     public boolean stringNumberValidate(String stringNum) {
-        boolean match = stringNum.matches(INT_NUMBER_REGEX);
-        return match;
+        return stringNum.matches(INT_NUMBER_REGEX);
     }
 
     @Override

@@ -6,7 +6,7 @@ import epam.mikalai.array.exception.CustomArrayException;
 public class CustomArrayFactory {
     public static CustomArray createCustomArray(int[] array) throws CustomArrayException {
         if (array == null) {
-            throw new CustomArrayException("Array is empty.");
+            throw new CustomArrayException("Array is null.");
         }
 
         CustomArray customArray = new CustomArray(array);

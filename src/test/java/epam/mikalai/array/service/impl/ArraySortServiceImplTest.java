@@ -8,12 +8,11 @@ import org.testng.annotations.Test;
 
 public class ArraySortServiceImplTest {
 
-    private ArraySortServiceImpl arraySortService;
+    private ArraySortServiceImpl arraySortService = new ArraySortServiceImpl();
     private CustomArray testArray;
     private final int[] sortedArray = {1,2,3,4,5};
     @BeforeMethod
     public void setUp() {
-        arraySortService = new ArraySortServiceImpl();
         testArray = new CustomArray(new int[]{4,3,5,1,2});
     }
 

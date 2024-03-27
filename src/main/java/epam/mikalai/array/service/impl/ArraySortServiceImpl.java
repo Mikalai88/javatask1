@@ -10,13 +10,8 @@ public class ArraySortServiceImpl implements ArraySortService {
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public void selectionSort(CustomArray customArray) throws CustomArrayException {
+    public void selectionSort(CustomArray customArray) {
         int[] arr = customArray.getCustomArray();
-
-        if (arr.length == 0) {
-            logger.error("Array is empty");
-            throw new CustomArrayException("Array is empty");
-        }
 
         for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
@@ -35,13 +30,8 @@ public class ArraySortServiceImpl implements ArraySortService {
     }
 
     @Override
-    public void insertionSort(CustomArray customArray) throws CustomArrayException {
+    public void insertionSort(CustomArray customArray) {
         int[] arr = customArray.getCustomArray();
-
-        if (arr.length == 0) {
-            logger.error("Array is empty");
-            throw new CustomArrayException("Array is empty");
-        }
 
         for (int i = 1;  i < arr.length; i++) {
             int key = arr[i];
@@ -57,13 +47,8 @@ public class ArraySortServiceImpl implements ArraySortService {
     }
 
     @Override
-    public void bubbleSort(CustomArray customArray) throws CustomArrayException {
+    public void bubbleSort(CustomArray customArray) {
         int[] arr = customArray.getCustomArray();
-
-        if (arr.length == 0) {
-            logger.error("Array is empty");
-            throw new CustomArrayException("Array is empty");
-        }
 
         int n = arr.length;
         boolean isSorted;

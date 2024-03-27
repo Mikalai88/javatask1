@@ -1,11 +1,4 @@
-11:45:20.332 [main] ERROR mikalai.array.service.impl.ArrayCountPositiveAndNegativeElementsServiceImpl - Array is empty
-11:47:21.090 [main] ERROR mikalai.array.service.impl.ArrayCountPositiveAndNegativeElementsServiceImpl - Array is empty
-11:49:15.244 [main] ERROR mikalai.array.service.impl.ArrayElementReplaceServiceImpl - Array is empty
-11:51:32.016 [main] INFO  mikalai.array.service.impl.ArrayMinMaxServiceImpl - Calculated max value: 9
-11:51:32.019 [main] ERROR mikalai.array.service.impl.ArrayMinMaxServiceImpl - Array is empty
-11:51:32.019 [main] INFO  mikalai.array.service.impl.ArrayMinMaxServiceImpl - Calculated min value: 1
-11:51:32.019 [main] ERROR mikalai.array.service.impl.ArrayMinMaxServiceImpl - Array is empty
-11:51:48.662 [main] ERROR mikalai.array.service.impl.ArrayMinMaxServiceImpl - Array is empty
-11:52:08.971 [main] ERROR mikalai.array.service.impl.ArrayMinMaxServiceImpl - Array is empty
-11:53:13.771 [main] ERROR mikalai.array.service.impl.ArrayMinMaxServiceImpl - Array is empty
-11:54:21.639 [main] ERROR mikalai.array.service.impl.ArrayMinMaxServiceImpl - Array is empty
+20:16:16.669 [main] INFO  mikalai.array.service.impl.ArrayBasicServiceImpl - Calculated min value: 1
+20:16:16.672 [main] ERROR mikalai.array.service.impl.ArrayBasicServiceImpl - Array is empty
+20:16:16.672 [main] INFO  mikalai.array.service.impl.ArrayBasicServiceImpl - Array element replaced. Old element, new element:
+20:16:16.673 [main] ERROR mikalai.array.service.impl.ArrayBasicServiceImpl - Array is empty
