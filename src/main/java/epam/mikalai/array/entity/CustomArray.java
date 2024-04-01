@@ -1,13 +1,20 @@
 package epam.mikalai.array.entity;
 
+import epam.mikalai.array.exception.CustomArrayException;
+import epam.mikalai.array.observer.ArrayStatisticsObserver;
+import epam.mikalai.array.observer.impl.ArrayStatisticsObserverImpl;
 import epam.mikalai.array.util.IdGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public class CustomArray {
+    Logger logger = LogManager.getLogger();
     private final int customArrayId = IdGenerator.increment();
     private int[] customArray;
+    private ArrayStatisticsObserver observer;
 
     public CustomArray() {
         this.customArray = new int[0];
@@ -15,18 +22,34 @@ public class CustomArray {
 
     public CustomArray(int... customArray) {
         this.customArray = customArray.clone();
+        observer = new ArrayStatisticsObserverImpl();
     }
+
+    public void removeObserver() { observer = null; }
+    public void addObserver() { observer = new ArrayStatisticsObserverImpl(); }
 
     public int[] getCustomArray() {
         return customArray.clone();
     }
 
     public void setCustomArray(int[] customArray) {
+
         this.customArray = customArray.clone();
+        notifyObserver();
     }
 
     public int getCustomArrayId() {
         return customArrayId;
+    }
+
+    private void notifyObserver()  {
+        if (observer != null) {
+            try {
+                observer.changeArrayElement(this);
+            } catch (CustomArrayException e) {
+                logger.error(e);
+            }
+        }
     }
 
     @Override

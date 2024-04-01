@@ -63,14 +63,56 @@ public class ArrayReaderImpl implements ArrayReader {
         }
 
 
-        int[] result = new int[numbers.size()];
-        for (int i = 0; i < numbers.size(); i++) {
-            result[i] = numbers.get(i);
-        }
+        int[] result = numbers.stream().mapToInt(i -> i).toArray();
         logger.info("Array successfully created from file " + filename + ". Number of elements: " + result.length);
         return result;
     }
 }
 
-// 1 стратегия: пропускаем только валидные строки
-// 2 стретегия: пропускаем все строки но убираем некорректные варианты
+// 2-й вариант:
+//public List<int[]> readArray(String filename) throws CustomArrayException {
+//    if (filename == null) {
+//        logger.warn("Filename is null.");
+//        throw new CustomArrayException("Filename is null.");
+//    }
+//
+//    Path path = Path.of(filename);
+//
+//    if (!Files.exists(path)) {
+//        logger.warn("File " + filename + " not exist and was replaced.");
+//        filename = DEFAULT_FILENAME;
+//        path = Path.of(filename);
+//    }
+//
+//    try {
+//        List<String> lines = Files.readAllLines(path);
+//        logger.info("File " + filename + " was read successfully. Number of lines: " + lines.size());
+//
+//        StringArrayValidator validator = new StringArrayValidatorImpl();
+//
+//        List<int[]> arrays = lines.stream()
+//                .filter(validator::stringArrayValidate)
+//                .map(line -> Arrays.stream(line.split(SPACE_DELIMITER))
+//                        .mapToInt(Integer::parseInt)
+//                        .toArray())
+//                .collect(Collectors.toList());
+//
+//        if (arrays.isEmpty()) {
+//            logger.error("File " + filename + " does not contain any valid array lines.");
+//            throw new CustomArrayException("File does not contain any valid array lines.");
+//        }
+//
+//        // Логирование информации о количестве найденных валидных массивов и их размерах
+//        logger.info("Successfully created " + arrays.size() + " arrays from file " + filename);
+//        for (int i = 0; i < arrays.size(); i++) {
+//            logger.info("Array " + (i + 1) + " has " + arrays.get(i).length + " elements.");
+//        }
+//
+//        return arrays;
+//    } catch (IOException e) {
+//        logger.error("Error reading file " + filename, e);
+//        throw new CustomArrayException("Error reading file " + filename, e);
+//    }
+//}
+
+

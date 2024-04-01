@@ -6,6 +6,9 @@ import epam.mikalai.array.service.ArrayBasicService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.OptionalDouble;
+
 public class ArrayBasicServiceImpl implements ArrayBasicService {
   static Logger logger = LogManager.getLogger();
 
@@ -16,12 +19,9 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    double sum = 0;
-    for (int value : arr) {
-      sum += value;
-    }
-    logger.info("Calculated average: {}", sum / arr.length);
-    return sum / arr.length;
+    double average = Arrays.stream(arr).average().orElseThrow(() -> new CustomArrayException("Cannot calculate average for an empty array"));
+    logger.info("Calculated average: {}", average);
+    return average;
   }
 
   @Override
@@ -31,10 +31,7 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    int sum = 0;
-    for (int value : arr) {
-      sum += value;
-    }
+    int sum = Arrays.stream(arr).sum();
     logger.info("Calculated sum: {}", sum);
     return sum;
   }
@@ -42,18 +39,11 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
   @Override
   public int findCountPositive(CustomArray customArray) throws CustomArrayException {
     int[] arr = customArray.getCustomArray();
-
     if (arr.length == 0) {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-
-    int positiveCount = 0;
-    for (int value : arr) {
-      if (value > 0) {
-        positiveCount++;
-      }
-    }
+    int positiveCount = (int) Arrays.stream(arr).filter(value -> value > 0).count();
     logger.info("Calculated positive: {}", positiveCount);
     return positiveCount;
   }
@@ -61,18 +51,11 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
   @Override
   public int findCountNegative(CustomArray customArray) throws CustomArrayException {
     int[] arr = customArray.getCustomArray();
-
     if (arr.length == 0) {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-
-    int negativeCount = 0;
-    for (int value : arr) {
-      if (value < 0) {
-        negativeCount++;
-      }
-    }
+    int negativeCount = (int) Arrays.stream(arr).filter(value -> value < 0).count();
     logger.info("Calculated negative: {}", negativeCount);
     return negativeCount;
   }
@@ -80,36 +63,23 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
   @Override
   public void replaceElements(CustomArray customArray, int oldValue, int newValue) throws CustomArrayException {
     int[] arr = customArray.getCustomArray();
-
     if (arr.length == 0) {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-
-    for (int i = 0; i < arr.length; i++) {
-      if (arr[i] == oldValue) {
-        arr[i] = newValue;
-      }
-    }
-    logger.info("Array element replaced. Old element, new element:", oldValue, newValue);
+    arr = Arrays.stream(arr).map(value -> value == oldValue ? newValue : value).toArray();
+    logger.info("Array elements replaced. Old value: {}, New value: {}", oldValue, newValue);
     customArray.setCustomArray(arr);
   }
 
   @Override
   public int findMax(CustomArray customArray) throws CustomArrayException {
     int[] arr = customArray.getCustomArray();
-
     if (arr.length == 0) {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-
-    int max = arr[0];
-    for (int value : arr) {
-      if (value > max) {
-        max = value;
-      }
-    }
+    int max = Arrays.stream(arr).max().orElseThrow(() -> new CustomArrayException("Cannot find max in an empty array"));
     logger.info("Calculated max value: {}", max);
     return max;
   }
@@ -117,18 +87,11 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
   @Override
   public int findMin(CustomArray customArray) throws CustomArrayException {
     int[] arr = customArray.getCustomArray();
-
     if (arr.length == 0) {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-
-    int min = arr[0];
-    for (int value : arr) {
-      if (value < min) {
-        min = value;
-      }
-    }
+    int min = Arrays.stream(arr).min().orElseThrow(() -> new CustomArrayException("Cannot find min in an empty array"));
     logger.info("Calculated min value: {}", min);
     return min;
   }

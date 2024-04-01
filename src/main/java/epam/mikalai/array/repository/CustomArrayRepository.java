@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class CustomArrayRepository {
-  private List<CustomArray> arrays = new ArrayList<>();
   private static CustomArrayRepository instance;
+  private List<CustomArray> arrays = new ArrayList<>();
 
   private CustomArrayRepository() {}
 
