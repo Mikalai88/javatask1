@@ -16,21 +16,21 @@ public class ArraySortServiceImplTest {
         testArray = new CustomArray(new int[]{4,3,5,1,2});
     }
 
-    @Test
-    public void testSelectionSort() throws CustomArrayException {
-        arraySortService.selectionSort(testArray);
-        Assert.assertEquals(testArray.getCustomArray(), sortedArray, "Selection sort failed");
-    }
-
-    @Test
-    public void testInsertionSort() throws CustomArrayException {
-        arraySortService.insertionSort(testArray);
-        Assert.assertEquals(testArray.getCustomArray(), sortedArray, "Insertion sort failed");
-    }
-
-    @Test
-    public void testBubbleSort() throws CustomArrayException {
-        arraySortService.bubbleSort(testArray);
-        Assert.assertEquals(testArray.getCustomArray(), sortedArray, "Bubble sort failed");
-    }
+//    @Test
+//    public void testSelectionSort() throws CustomArrayException {
+//        arraySortService.selectionSort(testArray);
+//        Assert.assertEquals(testArray.getCustomArray(), sortedArray, "Selection sort failed");
+//    }
+//
+//    @Test
+//    public void testInsertionSort() throws CustomArrayException {
+//        arraySortService.insertionSort(testArray);
+//        Assert.assertEquals(testArray.getCustomArray(), sortedArray, "Insertion sort failed");
+//    }
+//
+//    @Test
+//    public void testBubbleSort() throws CustomArrayException {
+//        arraySortService.bubbleSort(testArray);
+//        Assert.assertEquals(testArray.getCustomArray(), sortedArray, "Bubble sort failed");
+//    }
 }

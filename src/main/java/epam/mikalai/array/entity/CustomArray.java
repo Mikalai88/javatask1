@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class CustomArray {
-    Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
     private final int customArrayId = IdGenerator.increment();
     private int[] customArray;
     private ArrayStatisticsObserver observer;
@@ -44,11 +44,7 @@ public class CustomArray {
 
     private void notifyObserver()  {
         if (observer != null) {
-            try {
-                observer.changeArrayElement(this);
-            } catch (CustomArrayException e) {
-                logger.error(e);
-            }
+            observer.changeArrayElement(this);
         }
     }
 

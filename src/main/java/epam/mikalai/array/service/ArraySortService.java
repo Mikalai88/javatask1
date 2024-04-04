@@ -11,9 +11,7 @@ public interface ArraySortService {
     void sortByFirstElement(List<CustomArray> customArrayList);
     void sortByNumberOfElements(List<CustomArray> customArrayList);
 
-//    void selectionSort(CustomArray customArray);
-//
-//    void insertionSort(CustomArray customArray);
-//
-//    void bubbleSort(CustomArray customArray);
+    void selectionSort(CustomArray customArray);
+    void insertionSort(CustomArray customArray);
+    void bubbleSort(CustomArray customArray);
 }

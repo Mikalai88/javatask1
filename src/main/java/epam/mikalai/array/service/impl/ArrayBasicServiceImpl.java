@@ -19,7 +19,9 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    double average = Arrays.stream(arr).average().orElseThrow(() -> new CustomArrayException("Cannot calculate average for an empty array"));
+    double average = Arrays.stream(arr)
+            .average()
+            .orElseThrow(() -> new CustomArrayException("Cannot calculate average for an empty array"));
     logger.info("Calculated average: {}", average);
     return average;
   }
@@ -31,7 +33,8 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    int sum = Arrays.stream(arr).sum();
+    int sum = Arrays.stream(arr)
+            .sum();
     logger.info("Calculated sum: {}", sum);
     return sum;
   }
@@ -43,7 +46,8 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    int positiveCount = (int) Arrays.stream(arr).filter(value -> value > 0).count();
+    int positiveCount = (int) Arrays.stream(arr)
+            .filter(value -> value > 0).count();
     logger.info("Calculated positive: {}", positiveCount);
     return positiveCount;
   }
@@ -55,7 +59,8 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    int negativeCount = (int) Arrays.stream(arr).filter(value -> value < 0).count();
+    int negativeCount = (int) Arrays.stream(arr)
+            .filter(value -> value < 0).count();
     logger.info("Calculated negative: {}", negativeCount);
     return negativeCount;
   }
@@ -67,7 +72,8 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    arr = Arrays.stream(arr).map(value -> value == oldValue ? newValue : value).toArray();
+    arr = Arrays.stream(arr)
+            .map(value -> value == oldValue ? newValue : value).toArray();
     logger.info("Array elements replaced. Old value: {}, New value: {}", oldValue, newValue);
     customArray.setCustomArray(arr);
   }
@@ -79,7 +85,9 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    int max = Arrays.stream(arr).max().orElseThrow(() -> new CustomArrayException("Cannot find max in an empty array"));
+    int max = Arrays.stream(arr)
+            .max()
+            .orElseThrow(() -> new CustomArrayException("Cannot find max in an empty array"));
     logger.info("Calculated max value: {}", max);
     return max;
   }
@@ -91,7 +99,9 @@ public class ArrayBasicServiceImpl implements ArrayBasicService {
       logger.error("Array is empty");
       throw new CustomArrayException("Array is empty");
     }
-    int min = Arrays.stream(arr).min().orElseThrow(() -> new CustomArrayException("Cannot find min in an empty array"));
+    int min = Arrays.stream(arr)
+            .min()
+            .orElseThrow(() -> new CustomArrayException("Cannot find min in an empty array"));
     logger.info("Calculated min value: {}", min);
     return min;
   }

@@ -1,33 +1,32 @@
 package epam.mikalai.array.entity;
 
+import epam.mikalai.array.exception.CustomArrayException;
 import epam.mikalai.array.service.ArrayBasicService;
 import epam.mikalai.array.service.impl.ArrayBasicServiceImpl;
 
 import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 
 public class ArrayStatistics {
   private int sum;
-  private int max;
-  private int min;
-  private double average;
+  private OptionalInt max;
+  private OptionalInt min;
+  private OptionalDouble average;
 
-  public ArrayStatistics(CustomArray customArray) {
+  public ArrayStatistics(CustomArray customArray) throws CustomArrayException {
     calculateStatistics(customArray.getCustomArray());
   }
 
-  private void calculateStatistics(int[] customArray) {
-    if (customArray.length == 0) {
-      sum = 0;
-      max = Integer.MIN_VALUE;
-      min = Integer.MAX_VALUE;
-      average = 0;
-      return;
+  private void calculateStatistics(int[] customArray) throws CustomArrayException {
+    if (customArray.length == 0 || customArray == null) {
+      throw new CustomArrayException("Array null.");
     }
 
     sum = Arrays.stream(customArray).sum();
-    max = Arrays.stream(customArray).max().orElse(Integer.MIN_VALUE);
-    min = Arrays.stream(customArray).min().orElse(Integer.MAX_VALUE);
-    average = Arrays.stream(customArray).average().orElse(0);
+    max = Arrays.stream(customArray).max();
+    min = Arrays.stream(customArray).min();
+    average = Arrays.stream(customArray).average();
   }
 
 }

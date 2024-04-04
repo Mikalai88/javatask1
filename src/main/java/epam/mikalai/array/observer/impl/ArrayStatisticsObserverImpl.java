@@ -8,10 +8,16 @@ import epam.mikalai.array.observer.ArrayStatisticsObserver;
 
 public class ArrayStatisticsObserverImpl implements ArrayStatisticsObserver {
   @Override
-  public void changeArrayElement(CustomArray customArray) throws CustomArrayException {
-    ArrayStatistics statistics = new ArrayStatistics(customArray);
+  public void changeArrayElement(CustomArray customArray) {
+    ArrayStatistics statistics = null;
+    try {
+      statistics = new ArrayStatistics(customArray);
+    } catch (CustomArrayException e) {
+      throw new RuntimeException(e);
+    }
 
     Warehouse warehouse = Warehouse.getInstance();
-    warehouse.put(customArray.getCustomArrayId(), statistics);
+    int id = customArray.getCustomArrayId();
+    warehouse.put(id, statistics);
   }
 }

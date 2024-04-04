@@ -7,13 +7,18 @@ public class Warehouse {
 
   private Map<Integer, ArrayStatistics> map = new HashMap<>();
 
-  private Warehouse() {
-
-  }
+  private Warehouse() {}
 
   public static Warehouse getInstance() { return instance; }
 
   public ArrayStatistics put(Integer key, ArrayStatistics value) { return map.put(key, value); }
 
   public ArrayStatistics remove(Integer key) { return map.remove(key); }
+
+  @Override
+  public String toString() {
+    return "Warehouse{" +
+            "map=" + map +
+            '}';
+  }
 }
